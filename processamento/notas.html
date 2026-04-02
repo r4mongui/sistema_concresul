@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Notas Fiscais</title>
+    <link rel="stylesheet" href="notas.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Menu</h2>
+    <a href="../pagina_principal/index.html">Início</a>
+    <a href="../processamento/notas.html">Notas</a>
+    <a href="../escrituracao/escrituracao.html">Escrituração</a>
+</div>
+
+<div class="form">
+    <h1>Cadastro de Nota</h1>
+
+    <form id="formMovimento">
+        <label>CÓDIGO COLIGADA:</label><br>
+        <input type="number" id="CODCOLIGADA" required><br><br>
+
+        <label>FORNECEDOR:</label><br>
+        <input type="text" id="CODCFO" required><br><br>
+
+        <label>NUMERO DO MOVIMENTO:</label><br>
+        <input type="number" id="NUMEROMOV" required><br><br>
+
+        <label>STATUS:</label><br>
+        <input type="text" id="STATUS" required><br><br>
+
+        <label>LOCAL DE ESTOQUE:</label><br>
+        <input type="text" id="COD_LOC" required><br><br>
+
+        <label>SERIE:</label><br>
+        <input type="text" id="SERIE" required><br><br>
+
+        <label>DATA DE EMISSÃO:</label><br>
+        <input type="date" id="DATAEMISSAO" required><br><br>
+
+        <label>DATA DE SAIDA:</label><br>
+        <input type="date" id="DATASAIDA" required><br><br>
+
+        <label>DATA DE RECEBIMENTO:</label><br>
+        <input type="date" id="DATARECEB" required><br><br>
+        
+        <label>DEPARTAMENTO:</label><br>
+        <input type="text" id="COD_DEPTO" required><br><br>
+
+        <label>FORMA DE PAGAMENTO:</label><br>
+        <input type="number" id="COD_PAG" required><br><br>
+
+        <label>CARTÃO:</label><br>
+        <input type="number" id="COD_CARTAO" required><br><br>
+
+        <label>CLASSIFICAÇÃO:</label><br>
+        <input type="number" id="COD_CLASS" required><br><br>
+
+        <button type="submit">Salvar Nota</button>
+    </form>
+
+    <p id="resultado"></p>
+</div>
+
+<script>
+document.getElementById("formMovimento").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    // Pega os valores do formulário
+    const CODCOLIGADA = document.getElementById("CODCOLIGADA").value;
+    const CODCFO = document.getElementById("CODCFO").value;
+    const NUMEROMOV = document.getElementById("NUMEROMOV").value;
+    const STATUS = document.getElementById("STATUS").value;
+    const COD_LOC = document.getElementById("COD_LOC").value;
+    const SERIE = document.getElementById("SERIE").value;
+    const DATAEMISSAO = document.getElementById("DATAEMISSAO").value;
+    const DATASAIDA = document.getElementById("DATASAIDA").value;
+    const DATARECEB = document.getElementById("DATARECEB").value;
+    const COD_DEPTO = document.getElementById("COD_DEPTO").value;
+    const COD_PAG = document.getElementById("COD_PAG").value;
+    const COD_CARTAO = document.getElementById("COD_CARTAO").value;
+    const COD_CLASS = document.getElementById("COD_CLASS").value;
+
+    try {
+        const response = await fetch("http://192.168.18.76:3000/notas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                CODCOLIGADA: parseInt(CODCOLIGADA),
+                CODCFO: CODCFO,
+                NUMEROMOV: parseInt(NUMEROMOV),
+                STATUS: STATUS,
+                COD_LOC: COD_LOC,
+                SERIE: SERIE,
+                DATAEMISSAO: DATAEMISSAO,
+                DATASAIDA: DATASAIDA,
+                DATARECEB: DATARECEB,
+                COD_DEPTO: COD_DEPTO,
+                COD_PAG: parseInt(COD_PAG),
+                COD_CARTAO: parseInt(COD_CARTAO),
+                COD_CLASS: parseInt(COD_CLASS)
+            })
+        });
+
+        const text = await response.text();
+        document.getElementById("resultado").innerText = text;
+
+    } catch (err) {
+        console.error(err);
+        document.getElementById("resultado").innerText = "Erro ao enviar";
+    }
+});
+</script>
+
+</body>
+</html>

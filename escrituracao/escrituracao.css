@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    font-family: Montserrat;
+}
+/* Sidebar fixa */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    background: lightgray;
+    padding-top: 20px;
+}
+
+/* Título */
+.sidebar h2 {
+    color: black;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    cursor: default;
+}
+
+/* Links */
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 15px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background: gray;
+}
+
+/* Garante altura total */
+.content {
+    margin-left: 200px;
+    min-height: 100vh;
+}
+
+/* Container dividido */
+.main-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Lados */
+.left, .right {
+    width: 50%;
+    padding: 20px;
+}
+
+/* Linha no meio */
+.left {
+    border-right: 1px solid #ccc;
+}
+
+.left select{
+    border-radius: 5px;
+    border: 1px solig gray;
+    font-family: Montserrat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.left input{
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-family: Montserrat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+input[readonly]{
+    pointer-events: none;
+    background-color: #d6d6d6;
+    cursor: default;
+}
+
+.left button{
+    cursor: pointer;
+    background-color: rgb(86, 159, 228);
+    border: none;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 0.2s;
+    font-family: Montserrat;
+}
+
+.left button:hover{
+    background-color: rgb(63, 118, 170);
+}

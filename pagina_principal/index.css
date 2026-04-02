@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+/* Sidebar fixa */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    background: lightgray;
+    padding-top: 20px;
+}
+
+/* Título */
+.sidebar h2 {
+    color: black;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    cursor: default;
+}
+
+/* Links */
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 15px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background: gray;
+}
+
+/* Conteúdo deslocado */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}

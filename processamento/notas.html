@@ -15,14 +15,16 @@
 </div>
 
 <div class="form">
-    <h1>Cadastro de Nota</h1>
-
     <form id="formMovimento">
         <label>CÓDIGO COLIGADA:</label><br>
-        <input type="number" id="CODCOLIGADA" required><br><br>
+        <input type="text" id="CODCOLIGADA" readonly>
+        <input type="text" id="CO_NOME" readonly>
+        <button type="button" class="select-btn" id="btnColigada">...</button><br><br>
 
         <label>FORNECEDOR:</label><br>
-        <input type="text" id="CODCFO" required><br><br>
+        <input type="text" id="CODCFO" readonly>
+        <input type="text" id="FO_NOME" readonly>
+        <button type="button" class="select-btn" id="btnFornecedor">...</button><br><br>
 
         <label>NUMERO DO MOVIMENTO:</label><br>
         <input type="number" id="NUMEROMOV" required><br><br>
@@ -31,10 +33,14 @@
         <input type="text" id="STATUS" required><br><br>
 
         <label>LOCAL DE ESTOQUE:</label><br>
-        <input type="text" id="COD_LOC" required><br><br>
+        <input type="text" id="COD_LOC" readonly>
+        <input type="text" id="LOC_NOME" readonly>
+        <button type="button" class="select-btn" id="btnLocal">...</button><br><br>
 
         <label>SERIE:</label><br>
-        <input type="text" id="SERIE" required><br><br>
+        <input type="text" id="COD_SERIE" readonly>
+        <input type="text" id="SERIE_NOME" readonly>
+        <button type="button" class="select-btn" id="btnSerie">...</button><br><br>
 
         <label>DATA DE EMISSÃO:</label><br>
         <input type="date" id="DATAEMISSAO" required><br><br>
@@ -46,21 +52,79 @@
         <input type="date" id="DATARECEB" required><br><br>
         
         <label>DEPARTAMENTO:</label><br>
-        <input type="text" id="COD_DEPTO" required><br><br>
+        <input type="text" id="COD_DEPTO" readonly>
+        <input type="text" id="DEPTO_NOME" readonly>
+        <button type="button" class="select-btn" id="btnDepartamento">...</button><br><br>
 
         <label>FORMA DE PAGAMENTO:</label><br>
-        <input type="number" id="COD_PAG" required><br><br>
+        <input type="text" id="COD_PAG" readonly>
+        <input type="text" id="PAG_NOME" readonly>
+        <button type="button" class="select-btn" id="btnPagamento">...</button><br><br>
 
         <label>CARTÃO:</label><br>
-        <input type="number" id="COD_CARTAO" required><br><br>
+        <input type="number" id="COD_CARTAO" readonly><br><br>
 
         <label>CLASSIFICAÇÃO:</label><br>
-        <input type="number" id="COD_CLASS" required><br><br>
+        <input type="number" id="COD_CLASS" readonly><br><br>
 
         <button type="submit">Salvar Nota</button>
     </form>
 
     <p id="resultado"></p>
+</div>
+
+<div id="modalColigada" class="modal">
+    <div class="modal-content">
+        <h3>Escolha uma coligada</h3>
+        <input type="text" id="pesquisaColigada" placeholder="Pesquisar...">
+        <div id="listaColigada"></div>
+        <button class="close-btn" onclick="fecharModal()">x</button>
+    </div>
+</div>
+
+<div id="modalFornecedor" class="modal">
+    <div class="modal-content">
+        <h3>Escolha um fornecedor</h3>
+        <input type="text" id="pesquisaFornecedor" placeholder="Pesquisar...">
+        <div id="listaFornecedor"></div>
+        <button class="close-btn" onclick="fecharModal()">x</button>
+    </div>
+</div>
+
+<div id="modalLocal" class="modal">
+    <div class="modal-content">
+        <h3>Escolha um Local de Estoque</h3>
+        <input type="text" id="pesquisaLocal" placeholder="Pesquisar...">
+        <div id="listaLocal"></div>
+        <button class="close-btn" onclick="fecharModal()">x</button>
+    </div>
+</div>
+
+<div id="modalSerie" class="modal">
+    <div class="modal-content">
+        <h3>Escolha um Tipo de Série</h3>
+        <input type="text" id="pesquisaSerie" placeholder="Pesquisar...">
+        <div id="listaSerie"></div>
+        <button class="close-btn" onclick="fecharModal()">x</button>
+    </div>
+</div>
+
+<div id="modalDepartamento" class="modal">
+    <div class="modal-content">
+        <h3>Escolha um departamento</h3>
+        <input type="text" id="pesquisaDepartamento" placeholder="Pesquisar...">
+        <div id="listaDepartamento"></div>
+        <button class="close-btn" onclick="fecharModal()">x</button>
+    </div>
+</div>
+
+<div id="modalPagamento" class="modal">
+    <div class="modal-content">
+        <h3>Escolha uma forma de pagamento</h3>
+        <input type="text" id="pesquisaPagamento" placeholder="Pesquisar...">
+        <div id="listaPagamento"></div>
+        <button class="close-btn" onclick="fecharModal()">x</button>
+    </div>
 </div>
 
 <script>
@@ -114,6 +178,12 @@ document.getElementById("formMovimento").addEventListener("submit", async functi
     }
 });
 </script>
+<script src="scripts/pagamento.js"></script>
+<script src="scripts/departamento.js"></script>
+<script src="scripts/coligada.js"></script>
+<script src="scripts/local.js"></script>
+<script src="scripts/fornecedor.js"></script>
+<script src="scripts/serie.js"></script>
 
 </body>
 </html>
